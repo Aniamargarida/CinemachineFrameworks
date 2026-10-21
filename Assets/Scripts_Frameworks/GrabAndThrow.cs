@@ -9,6 +9,15 @@ public class GrabAndThrow : MonoBehaviour
 
     private GameObject nearbyObject;
     private GameObject heldObject;
+    private Animator animator;
+    
+
+    void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
+
+
 
     public void Interact(InputAction.CallbackContext context)
     {
@@ -23,12 +32,18 @@ public class GrabAndThrow : MonoBehaviour
         {
             Throw();
         }
-    }
 
+       
+    }
+   
     void PickUp()
     {
         if (nearbyObject == null)
             return;
+
+        if (animator != null)
+            animator.SetTrigger("PickUp");
+
 
         heldObject = nearbyObject;
         nearbyObject = null;
@@ -50,7 +65,10 @@ public class GrabAndThrow : MonoBehaviour
         heldObject.transform.SetParent(holdPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;
+
+       
     }
+
 
     void Throw()
     {
@@ -82,6 +100,7 @@ public class GrabAndThrow : MonoBehaviour
         else if (other.CompareTag("Crop"))
             nearbyObject = other.gameObject;
     }
+
 
     void OnTriggerExit(Collider other)
     {

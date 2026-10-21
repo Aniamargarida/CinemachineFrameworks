@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack");
     }
 
+ 
+
+   
+
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed && isGrounded)
