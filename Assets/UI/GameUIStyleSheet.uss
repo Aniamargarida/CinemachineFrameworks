@@ -1,0 +1,13 @@
+:root {
+}
+
+.LabelStyle {
+    height: 100px;
+    font-size: 50px;
+    -unity-font-definition: resource("FlatSkin/Font/Roboto-Black");
+}
+
+.LabelStyle {
+    position: absolute;
+    left: 1200px;
+}
